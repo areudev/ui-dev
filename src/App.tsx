@@ -4,23 +4,28 @@ import {Button} from './components/button'
 import {Input} from './components/input'
 import {Label} from './components/label'
 import {Checkbox} from './components/checkbox'
+import {Frame} from './components/frame'
 
 function App() {
 	return (
-		<div className="container flex flex-col items-center justify-center gap-2">
-			<h1 className="text-3xl">Yo world</h1>
-			<div>
-				<Button>Hi Mom</Button>
+		<Frame>
+			<div className="container flex flex-col items-center justify-center gap-2">
+				<h1 className="text-2xl">Yo world</h1>
+				<div>
+					<Button>Hi Mom</Button>
+				</div>
+				<Frame>
+					<div className="flex flex-col gap-2">
+						<Label>Label</Label>
+						<Input placeholder="Yo yoyo yo yo" />
+					</div>
+					<div className="flex gap-2 items-center">
+						<Checkbox />
+						<Label>Checkbox</Label>
+					</div>
+				</Frame>
 			</div>
-			<div className="flex flex-col gap-2">
-				<Label>Label</Label>
-				<Input placeholder="Yo yoyo yo yo" />
-			</div>
-			<div className="flex gap-2">
-				<Checkbox />
-				<Label>Checkbox</Label>
-			</div>
-		</div>
+		</Frame>
 	)
 }
 
