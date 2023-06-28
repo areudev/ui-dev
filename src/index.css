@@ -76,3 +76,51 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+#root {
+	@apply mx-auto h-screen w-screen max-w-7xl py-8 md:px-16;
+}
+
+*,
+html,
+body {
+	@apply box-border;
+}
+
+html,
+body {
+	@apply mx-0 mb-8 w-screen;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@apply font-bold leading-tight first:mt-0;
+}
+
+h1 {
+	@apply text-4xl leading-tight;
+}
+
+h2 {
+	@apply text-3xl;
+}
+
+h3 {
+	@apply text-2xl;
+}
+
+h4 {
+	@apply text-xl;
+}
+
+h5 {
+	@apply text-lg;
+}
+
+h6 {
+	@apply text-base;
+}
