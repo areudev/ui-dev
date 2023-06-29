@@ -12,7 +12,7 @@ const Counter = ({ initialValue = 0 }: CounterProps) => {
 	return (
 		<Frame className="text-center ">
 			<header>
-				<h1>Complex Counter</h1>
+				<h1>Days Since Last Incident</h1>
 			</header>
 			<div className="text-center text-8xl" data-testid="current-count">
 				{count}

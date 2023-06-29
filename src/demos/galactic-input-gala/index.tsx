@@ -5,12 +5,12 @@ import { Frame } from '../../components/frame'
 import {
 	Select,
 	SelectContent,
-	SelectGroup,
 	SelectItem,
-	SelectLabel,
 	SelectTrigger,
 	SelectValue,
 } from '../../components/select'
+import { Checkbox } from '../../components/checkbox'
+import { RadioGroupItem, RadioGroup } from '../../components/radio'
 
 const rickAndMortyCharacters = [
 	'Rick Sanchez',
@@ -51,11 +51,10 @@ const isTopping = (topping: string): topping is Topping => {
 
 const GalacticInputGala = () => {
 	const [text, setText] = useState('')
-	const [favoriteCharacter, setFavoriteCharacter] = useState(
-		rickAndMortyCharacters[0],
-	)
+	const [favoriteCharacter, setFavoriteCharacter] =
+		useState<string>('Jerry Smith')
 	const [toppings, dispatch] = useReducer(toppingsReducer, toppingsState)
-	const [favoriteBeatle, setFavoriteBeatle] = useState(migos[0])
+	const [favoriteBeatle, setFavoriteBeatle] = useState('')
 	const [color, setColor] = useState('#FF0000')
 	const [rating, setRating] = useState('4')
 	const [date, setDate] = useState('2023-03-23')
@@ -77,24 +76,71 @@ const GalacticInputGala = () => {
 					/>
 				</div>
 				<div className="flex items-center justify-around gap-2 border-2 p-2">
-					<p data-testid="text-result">{text}</p>
+					<p data-testid="text-result">{text || 'nothing deep here yet'}</p>
 				</div>
-				<div className=" items-center p-2">
-					<Select>
+				<div className="items-center">
+					<Select onValueChange={v => setFavoriteCharacter(v)}>
 						<SelectTrigger>
 							<SelectValue placeholder="Favorite Rick and Morty Character" />
 						</SelectTrigger>
 						<SelectContent>
-							<SelectGroup>
-								<SelectLabel>Rick and Morty Characters</SelectLabel>
-								{rickAndMortyCharacters.map(character => (
-									<SelectItem key={character} value={character}>
-										{character}
-									</SelectItem>
-								))}
-							</SelectGroup>
+							{rickAndMortyCharacters.map(character => (
+								<SelectItem key={character} value={character}>
+									{character}
+								</SelectItem>
+							))}
 						</SelectContent>
 					</Select>
+				</div>
+				<div className="flex items-center justify-around gap-2 border-2 p-2">
+					<p data-testid="select-result">{favoriteCharacter || 'No one'}</p>
+				</div>
+				<div className="flex flex-col justify-center gap-2 p-2">
+					{Object.keys(toppingsState).map(topping => (
+						<div className="flex items-center gap-2" key={topping}>
+							<Checkbox
+								id={topping.toLocaleUpperCase()}
+								checked={toppings[topping as Topping]}
+								onCheckedChange={(checked: boolean) =>
+									dispatch({
+										topping: topping as Topping,
+										checked,
+									})
+								}
+								data-testid={`checkbox-${topping.toLocaleLowerCase()}`}
+							/>
+							<Label htmlFor={topping.toLocaleUpperCase()}>
+								{topping.toLocaleUpperCase()}
+							</Label>
+						</div>
+					))}
+				</div>
+				<div className="flex items-center justify-around gap-2 border-2 p-2">
+					<p className="text-center" data-testid="checkbox-result">
+						Pizza with:{' '}
+						{Object.keys(toppings)
+							.filter(topping => toppings[topping as Topping])
+							.join(', ') || 'No Pizza'}
+					</p>
+				</div>
+				<div className="flex flex-col gap-2 p-2">
+					<h3>Favorite Beatle</h3>
+					<RadioGroup
+						onValueChange={v => {
+							setFavoriteBeatle(v)
+						}}
+						className=""
+					>
+						{migos.map(beatle => (
+							<div className="flex items-center gap-2">
+								<RadioGroupItem value={beatle} id={beatle} />
+								<Label htmlFor={beatle}>{beatle}</Label>
+							</div>
+						))}
+					</RadioGroup>
+				</div>
+				<div className="flex items-center justify-around gap-2 border-2 p-2">
+					<p data-testid="radio-result">{favoriteBeatle || 'No one'}</p>
 				</div>
 			</div>
 		</Frame>
