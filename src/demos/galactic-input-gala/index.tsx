@@ -11,6 +11,7 @@ import {
 } from '../../components/select'
 import { Checkbox } from '../../components/checkbox'
 import { RadioGroupItem, RadioGroup } from '../../components/radio'
+import { Slider } from '../../components/slider'
 
 const rickAndMortyCharacters = [
 	'Rick Sanchez',
@@ -56,7 +57,7 @@ const GalacticInputGala = () => {
 	const [toppings, dispatch] = useReducer(toppingsReducer, toppingsState)
 	const [favoriteBeatle, setFavoriteBeatle] = useState('')
 	const [color, setColor] = useState('#FF0000')
-	const [rating, setRating] = useState('4')
+	const [rating, setRating] = useState([4])
 	const [date, setDate] = useState('2023-03-23')
 	const [file, setFile] = useState<File | null>(null)
 
@@ -141,6 +142,50 @@ const GalacticInputGala = () => {
 				</div>
 				<div className="flex items-center justify-around gap-2 border-2 p-2">
 					<p data-testid="radio-result">{favoriteBeatle || 'No one'}</p>
+				</div>
+				<div className="flex gap-2 items-center p-2">
+					<Label className="min-w-min flex-shrink-0" htmlFor="color">
+						Favorite Color
+					</Label>
+					<Input
+						type="color"
+						id="color"
+						value={color}
+						onChange={e => setColor(e.target.value)}
+						data-testid="color-input"
+					/>
+				</div>
+				<div
+					className="flex items-center justify-around gap-2 border-2 p-2"
+					style={{
+						backgroundColor: color,
+						color: color > '#888888' ? '#000000' : '#ffffff',
+					}}
+					data-testid="color-container"
+				>
+					<p className="font-bold" data-testid="color-result">
+						{color}
+					</p>
+				</div>
+				<div className="flex flex-col gap-4 items-center p-2">
+					<Label htmlFor="rating">Rating</Label>
+					<Slider
+						id="rating"
+						name="rating"
+						min={0}
+						max={10}
+						defaultValue={rating}
+						onValueChange={v => setRating(v)}
+						data-testid="range-input"
+					/>
+				</div>
+				<div className="flex items-center justify-around gap-2 border-2 p-2">
+					<p data-testid="range-result">{rating}</p>
+				</div>
+				<div className="flex items-center gap-4 p-2">
+					<Label className="min-w-min flex-shrink-0" htmlFor="date">
+						<p>Date</p>
+					</Label>
 				</div>
 			</div>
 		</Frame>
