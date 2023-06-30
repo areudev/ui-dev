@@ -12,6 +12,7 @@ import {
 import { Checkbox } from '../../components/checkbox'
 import { RadioGroupItem, RadioGroup } from '../../components/radio'
 import { Slider } from '../../components/slider'
+import { DatePicker } from '../../components/date-picker'
 
 const rickAndMortyCharacters = [
 	'Rick Sanchez',
@@ -56,10 +57,10 @@ const GalacticInputGala = () => {
 		useState<string>('Jerry Smith')
 	const [toppings, dispatch] = useReducer(toppingsReducer, toppingsState)
 	const [favoriteBeatle, setFavoriteBeatle] = useState('')
-	const [color, setColor] = useState('#FF0000')
+	const [color, setColor] = useState('#38bdf8')
 	const [rating, setRating] = useState([4])
-	const [date, setDate] = useState('2023-03-23')
-	const [file, setFile] = useState<File | null>(null)
+	const [date, setDate] = useState<Date>()
+	const [file, setFile] = useState<string>('')
 
 	return (
 		<Frame className="mt-8">
@@ -133,7 +134,7 @@ const GalacticInputGala = () => {
 						className=""
 					>
 						{migos.map(beatle => (
-							<div className="flex items-center gap-2">
+							<div key={beatle} className="flex items-center gap-2">
 								<RadioGroupItem value={beatle} id={beatle} />
 								<Label htmlFor={beatle}>{beatle}</Label>
 							</div>
@@ -186,6 +187,28 @@ const GalacticInputGala = () => {
 					<Label className="min-w-min flex-shrink-0" htmlFor="date">
 						<p>Date</p>
 					</Label>
+					<DatePicker date={date} setDate={setDate} />
+				</div>
+				<div className="flex items-center justify-around gap-2 border-2 p-2">
+					<p data-testid="date-result">
+						{date?.toLocaleDateString() || 'No date'}
+					</p>
+				</div>
+				<div className="flex items-center gap-4 p-2">
+					<Label className="min-w-min flex-shrink-0" htmlFor="resume">
+						<p>File</p>
+					</Label>
+					<Input
+						type="file"
+						name="resume"
+						id="resume"
+						data-testid="file-input"
+						value={file}
+						onChange={e => setFile(e.target.value)}
+					/>
+				</div>
+				<div className="flex items-center justify-around gap-2 border-2 p-2">
+					<p data-testid="file-result">{file || 'No file'}</p>
 				</div>
 			</div>
 		</Frame>
