@@ -33,22 +33,15 @@ const toppingsState = {
 	pineapple: false,
 }
 
-const toppings = Object.keys(toppingsState)
-
 const migos = ['Quavo', 'Offset', 'Takeoff']
 
 type Topping = keyof typeof toppingsState
-type Beatle = (typeof migos)[number]
 
 const toppingsReducer = (
 	toppings: Record<Topping, boolean> = toppingsState,
 	action: { topping: Topping; checked: boolean },
 ) => {
 	return { ...toppings, [action.topping]: action.checked }
-}
-
-const isTopping = (topping: string): topping is Topping => {
-	return toppings.includes(topping)
 }
 
 const GalacticInputGala = () => {
@@ -82,7 +75,7 @@ const GalacticInputGala = () => {
 				</div>
 				<div className="items-center">
 					<Select onValueChange={v => setFavoriteCharacter(v)}>
-						<SelectTrigger>
+						<SelectTrigger title="Favorite Rick and Morty Character">
 							<SelectValue placeholder="Favorite Rick and Morty Character" />
 						</SelectTrigger>
 						<SelectContent>
@@ -102,6 +95,7 @@ const GalacticInputGala = () => {
 						<div className="flex items-center gap-2" key={topping}>
 							<Checkbox
 								id={topping.toLocaleUpperCase()}
+								aria-label={topping}
 								checked={toppings[topping as Topping]}
 								onCheckedChange={(checked: boolean) =>
 									dispatch({
@@ -132,10 +126,15 @@ const GalacticInputGala = () => {
 							setFavoriteBeatle(v)
 						}}
 						className=""
+						id="beatles"
 					>
 						{migos.map(beatle => (
 							<div key={beatle} className="flex items-center gap-2">
-								<RadioGroupItem value={beatle} id={beatle} />
+								<RadioGroupItem
+									aria-label={beatle}
+									value={beatle}
+									id={beatle}
+								/>
 								<Label htmlFor={beatle}>{beatle}</Label>
 							</div>
 						))}

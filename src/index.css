@@ -102,25 +102,25 @@ h6 {
 }
 
 h1 {
-	@apply text-4xl leading-tight;
+	@apply font-serif text-4xl leading-tight;
 }
 
 h2 {
-	@apply text-3xl;
+	@apply font-serif text-3xl;
 }
 
 h3 {
-	@apply text-2xl;
+	@apply font-serif text-2xl;
 }
 
 h4 {
-	@apply text-xl;
+	@apply font-serif text-xl;
 }
 
 h5 {
-	@apply text-lg;
+	@apply font-serif text-lg;
 }
 
 h6 {
-	@apply text-base;
+	@apply font-serif text-base;
 }

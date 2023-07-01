@@ -6,15 +6,12 @@ function ThemeToggler() {
 	const [theme, setTheme] = useState<string>('light')
 
 	useEffect(() => {
-		// set initial theme
 		const initialTheme = document.body.classList.contains('dark')
 			? 'dark'
 			: 'light'
 		setTheme(initialTheme)
 	}, [])
-
 	useEffect(() => {
-		// add class to body according to theme
 		document.body.classList.remove('light', 'dark')
 		document.body.classList.add(theme)
 	}, [theme])
@@ -25,6 +22,8 @@ function ThemeToggler() {
 
 	return (
 		<Button
+			aria-label="Toggle theme"
+			name="theme-toggler"
 			variant="ghost"
 			className="absolute top-0 right-0 m-4 p-2 rounded-full "
 			onClick={toggleTheme}

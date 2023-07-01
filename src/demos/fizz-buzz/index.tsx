@@ -1,4 +1,4 @@
-import { type PropsWithChildren, useState } from 'react'
+import { useState } from 'react'
 import { Frame } from '../../components/frame'
 import { Slider } from '../../components/slider'
 import { Label } from '../../components/label'

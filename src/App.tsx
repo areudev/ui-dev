@@ -1,4 +1,3 @@
-import { Calendar } from './components/calendar'
 import Counter from './demos/counter'
 import { FizzBuzz } from './demos/fizz-buzz'
 import GalacticInputGala from './demos/galactic-input-gala'
