@@ -4,21 +4,21 @@ import { Checkbox } from '../../components/checkbox'
 import { Label } from '../../components/label'
 import { Input } from '../../components/input'
 import { Button } from '../../components/button'
+import { useItem } from './store/hooks'
+import { remove, toggle, update } from './store/items-slice'
+import { useDispatch } from 'react-redux'
 
-const item = {
-	id: '1',
-	name: 'Toothbrush',
-	packed: false,
-}
 export const Item = ({ itemId }: { itemId: string }) => {
 	const [isEditing, setIsEditing] = React.useState(false)
+	const item = useItem(itemId)
+	const dispatch = useDispatch()
 	return (
 		<li className="flex items-center gap-2">
 			<Checkbox
 				id={`toggle-${item.id}`}
 				checked={item.packed}
 				onCheckedChange={() => {
-					item.packed = !item.packed
+					dispatch(toggle({ id: itemId }))
 				}}
 			/>
 			<Label
@@ -31,11 +31,17 @@ export const Item = ({ itemId }: { itemId: string }) => {
 				value={item.name}
 				className={clsx('py-0 text-sm', { hidden: !isEditing })}
 				onChange={e => {
-					console.log(e.target.value)
+					dispatch(update({ id: itemId, name: e.target.value }))
 				}}
 			/>
 			<div className="flex gap-2">
-				<Button size="sm" aria-label={`Edit ${item.name}`}>
+				<Button
+					size="sm"
+					aria-label={`Edit ${item.name}`}
+					onClick={() => {
+						setIsEditing(!isEditing)
+					}}
+				>
 					{isEditing ? '💾 Save' : '✍️ Edit'}
 				</Button>
 				<Button
@@ -43,7 +49,7 @@ export const Item = ({ itemId }: { itemId: string }) => {
 					variant="destructive"
 					aria-label={`Remove ${item.name}`}
 					onClick={() => {
-						console.log('remove')
+						dispatch(remove({ id: itemId }))
 					}}
 				>
 					🗑️ Remove

@@ -1,20 +1,25 @@
 import { toKebabCase } from '../../lib/to-kebab-case'
 import { Item } from './item'
+import { useItemIds } from './store/hooks'
 
-const initialItems = [
-	{
-		id: '1',
-		name: 'Toothbrush',
-		packed: false,
-	},
-	{
-		id: '2',
-		name: 'Toothpaste',
-		packed: false,
-	},
-	{
-		id: '3',
-		name: 'Socks',
-		packed: false,
-	},
-]
+const ItemList = ({ title, packed }: { title: string; packed: boolean }) => {
+	const id = toKebabCase(title)
+	const itemIds = useItemIds(packed)
+
+	return (
+		<section
+			id={id}
+			className="w-full border-2 border-border p-4"
+			data-testid={id}
+		>
+			<header className="mb-4">
+				<h2>{title}</h2>
+				<ul className="flex flex-col gap-2" data-testid={`${id}-list`}>
+					{itemIds.map(itemId => (
+						<Item key={itemId} itemId={itemId} />
+					))}
+				</ul>
+			</header>
+		</section>
+	)
+}
