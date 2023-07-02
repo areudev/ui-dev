@@ -1,19 +1,37 @@
 import { useSelector, useDispatch as useReduxDispatch } from 'react-redux'
+import { createSelector } from '@reduxjs/toolkit'
 import type { Item } from './items-slice'
 import type { ApplicationState, ApplicationDispatch } from '.'
 
-export const useAllItems = (): Item[] =>
-	useSelector<ApplicationState, Item[]>(state => Object.values(state.items))
+const selectItemsState = (state: ApplicationState) => state.items
 
-export const useItems = (packed: boolean): Item[] =>
-	useSelector<ApplicationState, Item[]>(state =>
-		Object.values(state.items).filter(item => item.packed === packed),
-	)
+const selectAllItems = createSelector([selectItemsState], items =>
+	Object.values(items),
+)
 
-export const useItemIds = (packed: boolean): string[] =>
-	useItems(packed).map(({ id }) => id)
+const selectPackedItems = createSelector([selectAllItems], (items: Item[]) =>
+	items.filter(item => item.packed),
+)
 
-export const useItem = (id: string): Item =>
-	useSelector<ApplicationState, Item>(state => state.items[id])
+const selectUnpackedItems = createSelector([selectAllItems], (items: Item[]) =>
+	items.filter(item => !item.packed),
+)
+
+export const useAllItems = (): Item[] => {
+	return useSelector(selectAllItems)
+}
+
+export const useItems = (packed: boolean): Item[] => {
+	return useSelector(packed ? selectPackedItems : selectUnpackedItems)
+}
+
+export const useItemIds = (packed: boolean): string[] => {
+	const items = useItems(packed)
+	return items.map(({ id }) => id)
+}
+
+export const useItem = (id: string): Item => {
+	return useSelector((state: ApplicationState) => state.items[id])
+}
 
 export const useDispatch: () => ApplicationDispatch = useReduxDispatch

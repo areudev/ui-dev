@@ -1,7 +1,7 @@
 import Counter from './demos/counter'
 import { FizzBuzz } from './demos/fizz-buzz'
 import GalacticInputGala from './demos/galactic-input-gala'
-import { PackingList } from './demos/packing-list'
+import PackingList from './demos/packing-list'
 import ThemeToggler from './lib/theming'
 
 function App() {

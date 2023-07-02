@@ -2,7 +2,13 @@ import { toKebabCase } from '../../lib/to-kebab-case'
 import { Item } from './item'
 import { useItemIds } from './store/hooks'
 
-const ItemList = ({ title, packed }: { title: string; packed: boolean }) => {
+export const ItemList = ({
+	title,
+	packed,
+}: {
+	title: string
+	packed: boolean
+}) => {
 	const id = toKebabCase(title)
 	const itemIds = useItemIds(packed)
 
@@ -14,12 +20,13 @@ const ItemList = ({ title, packed }: { title: string; packed: boolean }) => {
 		>
 			<header className="mb-4">
 				<h2>{title}</h2>
-				<ul className="flex flex-col gap-2" data-testid={`${id}-list`}>
-					{itemIds.map(itemId => (
-						<Item key={itemId} itemId={itemId} />
-					))}
-				</ul>
 			</header>
+			<ul className="flex flex-col gap-2" data-testid={`${id}-list`}>
+				{itemIds.map(itemId => (
+					<Item key={itemId} itemId={itemId} />
+				))}
+			</ul>
+			{!itemIds.length && <p>Nothing here yet</p>}
 		</section>
 	)
 }
