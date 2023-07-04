@@ -1,4 +1,4 @@
-import { render, screen } from '../../../test/utilities'
+import { render, screen, waitFor } from '../../../test/utilities'
 import PackingList from '.'
 
 it('renders the Packing List application', () => {

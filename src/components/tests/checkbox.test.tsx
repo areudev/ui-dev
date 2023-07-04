@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen } from '../../../test/utilities'
+import { render, screen } from 'test/utilities'
 import { Checkbox } from '../checkbox'
 import { vi } from 'vitest'
 

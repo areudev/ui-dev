@@ -1,2 +1,3 @@
-export const toKebabCase = (str: string) =>
-	str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
+export const toKebabCase = (s: string): string => {
+	return s.toLowerCase().replace(/\s/g, '-')
+}

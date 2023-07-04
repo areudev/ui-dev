@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent } from '../../../test/utilities'
+import { render, screen, fireEvent } from 'test/utilities'
 import { Input } from '../input'
 
 describe('Input component', () => {

@@ -1,5 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react'
-import { render as renderComponent } from '../../../test/utilities'
+import { render, screen } from '@testing-library/react'
+import { render as renderComponent } from 'test/utilities'
 import { Button, ButtonProps } from '../button'
 import { vi } from 'vitest'
 
@@ -17,8 +17,6 @@ describe('Button', () => {
 		const button = screen.getByRole('button')
 
 		await user.click(button)
-		// fireEvent.click(button)
-
 		expect(handleClick).toHaveBeenCalledTimes(1)
 	})
 
