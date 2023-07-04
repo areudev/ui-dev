@@ -21,7 +21,7 @@ export const NewItem = () => {
 			}}
 		>
 			<Label className="font-semibold" htmlFor="new-item-name">
-				Add New Item
+				New Item Name
 			</Label>
 			<div className="flex my-2">
 				<Input
@@ -40,8 +40,10 @@ export const NewItem = () => {
 					className="whitespace-nowrap "
 					aria-label="Add new item"
 					variant="outline"
+					disabled={newItemName.trim() === ''}
+					name="Add New Item"
 				>
-					<Plus size={16} className="mr-2" />
+					{/* <Plus size={16} className="mr-2" /> */}
 					Add New Item
 				</Button>
 			</div>
