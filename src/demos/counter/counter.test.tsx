@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+import { render } from './test/utilities'
 import Counter from '.'
 import { test } from 'vitest'
 
@@ -8,19 +9,34 @@ test('it bodies', () => {
 
 test('it should render the component', () => {
 	render(<Counter />)
-	screen.debug(document.body)
+	const currentCount = screen.getByTestId('current-count')
+	expect(currentCount).toHaveTextContent('0')
 })
 
-test('it should inccrement the counter', async () => {
-	render(<Counter />)
-	const currentCount = screen.getByTestId('current-count')
-	screen.debug(currentCount)
-	fireEvent.click(screen.getByRole('button', { name: /increment/i }))
-	fireEvent.click(screen.getByRole('button', { name: /increment/i }))
-	// expect(currentCount.textContent).toBe('0')
-	expect(currentCount).toHaveTextContent('2')
+test('it should increment when the "Increment" button is pressed', async () => {
+	const { user } = render(<Counter />)
 
-	fireEvent.click(screen.getByRole('button', { name: /reset/i }))
+	const currentCount = screen.getByTestId('current-count')
+	const incrementButton = screen.getByRole('button', { name: 'Increment' })
+
+	await user.click(incrementButton)
+
+	expect(currentCount).toHaveTextContent('1')
+})
+
+test('it should render the component with an initial count', () => {
+	render(<Counter initialValue={400} />)
+	const currentCount = screen.getByTestId('current-count')
+	expect(currentCount).toHaveTextContent('400')
+})
+
+test('it should reset the count when the "Reset" button is pressed', async () => {
+	const { user } = render(<Counter initialValue={400} />)
+
+	const currentCount = screen.getByTestId('current-count')
+	const resetButton = screen.getByRole('button', { name: 'Reset' })
+
+	await user.click(resetButton)
+
 	expect(currentCount).toHaveTextContent('0')
-	// expect(currentCount)('0')
 })
