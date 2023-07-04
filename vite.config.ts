@@ -1,9 +1,9 @@
 import path from 'node:path'
-import { defineConfig } from 'vite'
+import { UserConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
-export default defineConfig({
+const configuration: UserConfig = {
 	plugins: [react()],
 	resolve: {
 		alias: {
@@ -12,4 +12,6 @@ export default defineConfig({
 			$components: path.resolve(__dirname, './src/components'),
 		},
 	},
-})
+}
+
+export default configuration
