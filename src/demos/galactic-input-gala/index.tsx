@@ -74,8 +74,15 @@ const GalacticInputGala = () => {
 					<p data-testid="text-result">{text || 'nothing deep here yet'}</p>
 				</div>
 				<div className="items-center">
-					<Select onValueChange={v => setFavoriteCharacter(v)}>
-						<SelectTrigger title="Favorite Rick and Morty Character">
+					<Select
+						value={favoriteCharacter}
+						aria-label="Favorite Rick and Morty Character"
+						onValueChange={v => setFavoriteCharacter(v)}
+					>
+						<SelectTrigger
+							aria-label="Favorite Rick and Morty Character"
+							title="Favorite Rick and Morty Character"
+						>
 							<SelectValue placeholder="Favorite Rick and Morty Character" />
 						</SelectTrigger>
 						<SelectContent>
@@ -177,6 +184,8 @@ const GalacticInputGala = () => {
 						defaultValue={rating}
 						onValueChange={v => setRating(v)}
 						data-testid="range-input"
+						aria-label="rating"
+						title="rating"
 					/>
 				</div>
 				<div className="flex items-center justify-around gap-2 border-2 p-2">
@@ -193,7 +202,7 @@ const GalacticInputGala = () => {
 						{date?.toLocaleDateString() || 'No date'}
 					</p>
 				</div>
-				<div className="flex items-center gap-4 p-2">
+				{/* <div className="flex items-center gap-4 p-2">
 					<Label className="min-w-min flex-shrink-0" htmlFor="resume">
 						<p>File</p>
 					</Label>
@@ -208,7 +217,7 @@ const GalacticInputGala = () => {
 				</div>
 				<div className="flex items-center justify-around gap-2 border-2 p-2">
 					<p data-testid="file-result">{file || 'No file'}</p>
-				</div>
+				</div> */}
 			</div>
 		</Frame>
 	)
