@@ -1,5 +1,5 @@
 import { Provider } from 'react-redux'
-import { Frame } from '../../components/frame'
+import { Frame } from '$components/frame'
 import { NewItem } from './new-item'
 import { store } from './store'
 import { ItemList } from './new-list'

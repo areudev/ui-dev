@@ -8,11 +8,11 @@ import {
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from '../../components/select'
-import { Checkbox } from '../../components/checkbox'
-import { RadioGroupItem, RadioGroup } from '../../components/radio'
-import { Slider } from '../../components/slider'
-import { DatePicker } from '../../components/date-picker'
+} from '$components/select'
+import { Checkbox } from '$components/checkbox'
+import { RadioGroupItem, RadioGroup } from '$components/radio'
+import { Slider } from '$components/slider'
+import { DatePicker } from '$components/date-picker'
 
 const rickAndMortyCharacters = [
 	'Rick Sanchez',

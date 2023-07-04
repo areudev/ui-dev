@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { createPerson, Person } from '../../lib/person'
-import { KanbanBoard } from '../../lib/kanban-board'
+import { createPerson, Person } from '$lib/person'
+import { KanbanBoard } from '$lib/kanban-board'
 
 it('should pass if the two numbers would add up correctly in a language other than JavaScript', () => {
 	expect(0.2 + 0.1).toBeCloseTo(0.3)

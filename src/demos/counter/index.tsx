@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Frame } from '../../components/frame'
-import { Button } from '../../components/button'
+import { Frame } from '$components/frame'
+import { Button } from '$components/button'
 
 type CounterProps = {
 	initialValue?: number

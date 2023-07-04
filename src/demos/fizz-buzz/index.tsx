@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { Frame } from '../../components/frame'
-import { Slider } from '../../components/slider'
-import { Label } from '../../components/label'
-import { repeat } from '../../lib/repeat'
-import { toFizzBuzz } from '../../lib/to-fizz-buzz'
+import { Frame } from '$components/frame'
+import { Slider } from '$components/slider'
+import { Label } from '$components/label'
+import { repeat } from '$lib/repeat'
+import { toFizzBuzz } from '$lib/to-fizz-buzz'
 import clsx from 'clsx'
 
 export const FizzBuzz = () => {

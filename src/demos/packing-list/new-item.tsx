@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { add } from './store/items-slice'
 import { useDispatch } from 'react-redux'
-import { Label } from '../../components/label'
-import { Input } from '../../components/input'
-import { Button } from '../../components/button'
+import { Label } from '$components/label'
+import { Input } from '$components/input'
+import { Button } from '$components/button'
 import { Plus } from 'lucide-react'
 
 export const NewItem = () => {

@@ -1,4 +1,4 @@
-import { toKebabCase } from '../../lib/to-kebab-case'
+import { toKebabCase } from '$lib/to-kebab-case'
 import { Item } from './item'
 import { useItemIds } from './store/hooks'
 

@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { markAllAsUnpacked } from './store/items-slice'
-import { Button } from '../../components/button'
+import { Button } from '$components/button'
 
 export const MarkAllAsUnpacked = () => {
 	const dispatch = useDispatch()
