@@ -1,49 +1,49 @@
 import { v4 as id } from 'uuid'
 import { expect, it } from 'vitest'
 
-type ComputerScientist = {
+type RickAndMortyCharacter = {
 	id: string
 	firstName: string
 	lastName: string
-	isCool?: boolean
+	isAdventurer?: boolean
 }
 
-const createComputerScientist = (
+const createCharacter = (
 	firstName: string,
 	lastName: string,
-): ComputerScientist => ({ id: 'cs-' + id(), firstName, lastName })
+): RickAndMortyCharacter => ({ id: 'rm-' + id(), firstName, lastName })
 
-const addToCoolKidsClub = (p: ComputerScientist, club: unknown[]) => {
-	club.push({ ...p, isCool: true })
+const addToAdventurersClub = (c: RickAndMortyCharacter, club: unknown[]) => {
+	club.push({ ...c, isAdventurer: true })
 }
 
-it('include cool computer scientists by virtue of them being in the club', () => {
-	const people: ComputerScientist[] = []
+it('includes adventurous Rick and Morty characters by virtue of them being in the club', () => {
+	const characters: RickAndMortyCharacter[] = []
 
-	addToCoolKidsClub(createComputerScientist('Grace', 'Hopper'), people)
-	addToCoolKidsClub(createComputerScientist('Ada', 'Lovelace'), people)
-	addToCoolKidsClub(createComputerScientist('Annie', 'Easley'), people)
-	addToCoolKidsClub(createComputerScientist('Dorothy', 'Vaughn'), people)
+	addToAdventurersClub(createCharacter('Rick', 'Sanchez'), characters)
+	addToAdventurersClub(createCharacter('Morty', 'Smith'), characters)
+	addToAdventurersClub(createCharacter('Summer', 'Smith'), characters)
+	addToAdventurersClub(createCharacter('Beth', 'Smith'), characters)
 
-	for (const person of people) {
-		expect(typeof person.firstName).toBe('string')
-		expect(typeof person.lastName).toBe('string')
-		expect(person.isCool).toBe(true)
+	for (const character of characters) {
+		expect(typeof character.firstName).toBe('string')
+		expect(typeof character.lastName).toBe('string')
+		expect(character.isAdventurer).toBe(true)
 	}
 
-	for (const person of people) {
-		expect(person).toEqual({
-			id: expect.stringMatching(/^cs-/),
+	for (const character of characters) {
+		expect(character).toEqual({
+			id: expect.stringMatching(/^rm-/),
 			firstName: expect.any(String),
 			lastName: expect.any(String),
-			isCool: true,
+			isAdventurer: true,
 		})
 	}
 
-	for (const person of people) {
-		expect(person).toEqual(
+	for (const character of characters) {
+		expect(character).toEqual(
 			expect.objectContaining({
-				isCool: expect.any(Boolean),
+				isAdventurer: expect.any(Boolean),
 			}),
 		)
 	}
