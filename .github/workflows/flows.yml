@@ -1,4 +1,4 @@
-name: pnpm Example Workflow
+name: build-and-test
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-20.04
 
     strategy:
@@ -28,23 +28,26 @@ jobs:
         run: pnpm install
       - name: Run Tests
         run: pnpm test
-# name: Unit Tests
 
-# on:
-#   push:
-#     branches: [main]
-#   pull_request:
-#     branches: [main]
+  build:
+    needs: test
+    runs-on: ubuntu-20.04
 
-# jobs:
-#   build-and-test:
-#     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18]
 
-#     steps:
-#       - uses: actions/checkout@v3
-#       - name: Setup Node
-#         uses: actions/setup-node@v3
-#       - name: Install pnpm
-#         run: npm install -g pnpm
-#       - run: pnpm install
-#       - run: pnpm test
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build the application
+        run: pnpm build
