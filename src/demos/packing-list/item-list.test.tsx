@@ -21,7 +21,6 @@ it('should display items', () => {
 			<Provider store={store}>{children}</Provider>
 		),
 	})
-	screen.debug()
 
 	expect(screen.getByTestId('unpacked-items-list')).toMatchInlineSnapshot(`
     <ul

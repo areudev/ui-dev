@@ -60,7 +60,7 @@ const GalacticInputGala = () => {
 			<div className="grid grid-cols-2 gap-4">
 				<div className="flex items-center gap-4  p-2">
 					<Label className="min-w-min flex-shrink-0" htmlFor="deep-thought">
-						<p>Deep Thought</p>
+						<span>Deep Thought</span>
 					</Label>
 					<Input
 						placeholder="Some text..."
@@ -134,6 +134,7 @@ const GalacticInputGala = () => {
 						}}
 						className=""
 						id="beatles"
+						data-testid="radio-group-beatles"
 					>
 						{migos.map(beatle => (
 							<div key={beatle} className="flex items-center gap-2">
@@ -202,7 +203,7 @@ const GalacticInputGala = () => {
 						{date?.toLocaleDateString() || 'No date'}
 					</p>
 				</div>
-				{/* <div className="flex items-center gap-4 p-2">
+				<div className="flex items-center gap-4 p-2">
 					<Label className="min-w-min flex-shrink-0" htmlFor="resume">
 						<p>File</p>
 					</Label>
@@ -217,7 +218,7 @@ const GalacticInputGala = () => {
 				</div>
 				<div className="flex items-center justify-around gap-2 border-2 p-2">
 					<p data-testid="file-result">{file || 'No file'}</p>
-				</div> */}
+				</div>
 			</div>
 		</Frame>
 	)
