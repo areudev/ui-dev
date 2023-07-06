@@ -4,6 +4,9 @@ import DogFacts from './demos/dog-facts'
 import { FizzBuzz } from './demos/fizz-buzz'
 import GalacticInputGala from './demos/galactic-input-gala'
 import PackingList from './demos/packing-list'
+import PokemonSearch from './demos/pokemon'
+import PokemonDetail from './demos/pokemon/pokemon-page'
+
 import ThemeToggler from './lib/theming'
 import {
 	createBrowserRouter,
@@ -43,6 +46,16 @@ const router = createBrowserRouter([
 		element: <DogFacts />,
 		children: [],
 	},
+	{
+		path: '/pokemon',
+		element: <PokemonSearch />,
+		children: [],
+	},
+	{
+		path: '/pokemon/:id',
+		element: <PokemonDetail />,
+		children: [],
+	},
 ])
 
 function Layout() {
@@ -64,6 +77,9 @@ function Layout() {
 					</Button>
 					<Button variant="link" asChild>
 						<Link to="/dog-facts">Dog Facts</Link>
+					</Button>
+					<Button variant="link" asChild>
+						<Link to="/pokemon">Pokemon</Link>
 					</Button>
 				</nav>
 				<ThemeToggler />

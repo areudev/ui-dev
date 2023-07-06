@@ -5,27 +5,40 @@ import { Button } from '../components/button'
 function ThemeToggler() {
 	const [theme, setTheme] = useState<string>('light')
 
+	const toggleTheme = () => {
+		const newTheme = theme === 'light' ? 'dark' : 'light'
+		setTheme(newTheme)
+		window.localStorage.setItem('theme', newTheme)
+	}
+
 	useEffect(() => {
-		const initialTheme = document.body.classList.contains('dark')
-			? 'dark'
-			: 'light'
-		setTheme(initialTheme)
+		const syncThemeWithLocalStorage = (e: StorageEvent) => {
+			if (e.key === 'theme') {
+				setTheme(e.newValue || 'light')
+			}
+		}
+
+		const storedTheme = window.localStorage.getItem('theme') || 'light'
+		setTheme(storedTheme)
+		document.body.classList.remove('light', 'dark')
+		document.body.classList.add(storedTheme)
+
+		window.addEventListener('storage', syncThemeWithLocalStorage)
+		return () => {
+			window.removeEventListener('storage', syncThemeWithLocalStorage)
+		}
 	}, [])
+
 	useEffect(() => {
 		document.body.classList.remove('light', 'dark')
 		document.body.classList.add(theme)
 	}, [theme])
-
-	const toggleTheme = () => {
-		setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'))
-	}
 
 	return (
 		<Button
 			aria-label="Toggle theme"
 			name="theme-toggler"
 			variant="ghost"
-			// className="absolute top-0 right-0 m-4 p-2 rounded-full "
 			className="m-4 p-2 rounded-full "
 			onClick={toggleTheme}
 		>
