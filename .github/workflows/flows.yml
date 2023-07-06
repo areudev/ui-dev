@@ -52,7 +52,7 @@ jobs:
       - name: Build the application 🏗
         run: pnpm build
       - name: Archive production artifacts 📦
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: build-output
           path: dist
