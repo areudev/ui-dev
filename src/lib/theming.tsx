@@ -25,7 +25,8 @@ function ThemeToggler() {
 			aria-label="Toggle theme"
 			name="theme-toggler"
 			variant="ghost"
-			className="absolute top-0 right-0 m-4 p-2 rounded-full "
+			// className="absolute top-0 right-0 m-4 p-2 rounded-full "
+			className="m-4 p-2 rounded-full "
 			onClick={toggleTheme}
 		>
 			{theme === 'light' ? (
