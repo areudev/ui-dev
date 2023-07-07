@@ -43,9 +43,9 @@ function ThemeToggler() {
 			onClick={toggleTheme}
 		>
 			{theme === 'light' ? (
-				<Sun className="w-6 h-6" />
-			) : (
 				<Moon className="w-6 h-6" />
+			) : (
+				<Sun className="w-6 h-6" />
 			)}
 		</Button>
 	)
