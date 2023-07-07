@@ -49,6 +49,12 @@ dependencies:
   react-redux:
     specifier: ^8.1.1
     version: 8.1.1(@types/react-dom@18.0.11)(@types/react@18.0.37)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
+  react-router-dom:
+    specifier: ^6.14.1
+    version: 6.14.1(react-dom@18.2.0)(react@18.2.0)
+  swr:
+    specifier: ^2.2.0
+    version: 2.2.0(react@18.2.0)
   tailwind-merge:
     specifier: ^1.13.2
     version: 1.13.2
@@ -57,6 +63,9 @@ dependencies:
     version: 9.0.0
 
 devDependencies:
+  '@playwright/test':
+    specifier: ^1.35.1
+    version: 1.35.1
   '@testing-library/jest-dom':
     specifier: ^5.16.5
     version: 5.16.5
@@ -1105,6 +1114,17 @@ packages:
       fastq: 1.15.0
     dev: true
 
+  /@playwright/test@1.35.1:
+    resolution: {integrity: sha512-b5YoFe6J9exsMYg0pQAobNDR85T1nLumUYgUTtKm4d21iX2L7WqKq9dW8NGJ+2vX0etZd+Y7UeuqsxDXm9+5ZA==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dependencies:
+      '@types/node': 20.3.3
+      playwright-core: 1.35.1
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
   /@polka/url@1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
@@ -1755,6 +1775,11 @@ packages:
       redux: 4.2.1
       redux-thunk: 2.4.2(redux@4.2.1)
       reselect: 4.1.8
+    dev: false
+
+  /@remix-run/router@1.7.1:
+    resolution: {integrity: sha512-bgVQM4ZJ2u2CM8k1ey70o1ePFXsEzYVZoWghh6WjM8p59jQ7HxzbHW4SbnWFG7V9ig9chLawQxDTZ3xzOF8MkQ==}
+    engines: {node: '>=14'}
     dev: false
 
   /@sinclair/typebox@0.25.24:
@@ -4882,6 +4907,12 @@ packages:
       pathe: 1.1.1
     dev: true
 
+  /playwright-core@1.35.1:
+    resolution: {integrity: sha512-pNXb6CQ7OqmGDRspEjlxE49w+4YtR6a3X6mT1hZXeJHWmsEz7SunmvZeiG/+y1yyMZdHnnn73WKYdtV1er0Xyg==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dev: true
+
   /postcss-import@15.1.0(postcss@8.4.24):
     resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
     engines: {node: '>=14.0.0'}
@@ -5107,6 +5138,29 @@ packages:
       tslib: 2.6.0
       use-callback-ref: 1.3.0(@types/react@18.0.37)(react@18.2.0)
       use-sidecar: 1.1.2(@types/react@18.0.37)(react@18.2.0)
+    dev: false
+
+  /react-router-dom@6.14.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ssF6M5UkQjHK70fgukCJyjlda0Dgono2QGwqGvuk7D+EDGHdacEN3Yke2LTMjkrpHuFwBfDFsEjGVXBDmL+bWw==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.7.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-router: 6.14.1(react@18.2.0)
+    dev: false
+
+  /react-router@6.14.1(react@18.2.0):
+    resolution: {integrity: sha512-U4PfgvG55LdvbQjg5Y9QRWyVxIdO1LlpYT7x+tMAxd9/vmiPuJhIwdxZuIQLN/9e3O4KFDHYfR9gzGeYMasW8g==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.7.1
+      react: 18.2.0
     dev: false
 
   /react-style-singleton@2.2.1(@types/react@18.0.37)(react@18.2.0):
@@ -5462,6 +5516,15 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
     dev: true
+
+  /swr@2.2.0(react@18.2.0):
+    resolution: {integrity: sha512-AjqHOv2lAhkuUdIiBu9xbuettzAzWXmCEcLONNKJRba87WAefz8Ca9d6ds/SzrPc235n1IxWYdhJ2zF3MNUaoQ==}
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
 
   /symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}

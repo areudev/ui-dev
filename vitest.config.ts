@@ -17,6 +17,15 @@ export default defineConfig({
 			['**/*.test.tsx', 'jsdom'],
 			['**/*.component.test.ts', 'jsdom'],
 		],
+		exclude: [
+			...defaultExclude,
+			'**/coverage/**',
+			'**/snapshot-tests/**',
+			'**/vite.*.ts',
+			'**/*.config.*',
+			'**/*.d.ts',
+			'**/*.spec.*',
+		],
 		// coverage: {
 		// 	statements: 81.84,
 		// 	thresholdAutoUpdate: true,
