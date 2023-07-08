@@ -1,4 +1,4 @@
-import {multiply} from './math'
+import { multiply } from './math'
 
 export const exponent = (base: number, power: number) => {
 	let result = base

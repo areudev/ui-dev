@@ -1,4 +1,4 @@
-import {toKebabCase} from './to-kebab-case'
+import { toKebabCase } from './to-kebab-case'
 
 export const defaultStatuses = ['Backlog', 'Ready', 'In Progress', 'Completed']
 
