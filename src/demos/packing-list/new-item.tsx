@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 import { Label } from '$components/label'
 import { Input } from '$components/input'
 import { Button } from '$components/button'
-import { Plus } from 'lucide-react'
 
 export const NewItem = () => {
 	const [newItemName, setNewItemName] = useState('')

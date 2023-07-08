@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 // import useSWR from 'swr'
 
@@ -23,7 +23,7 @@ export type Ability = {
 export const fetcher = (url: string) => fetch(url).then(res => res.json())
 
 const PokemonPage = () => {
-	const { id } = useParams<{ id: string }>()
+	// const { id } = useParams<{ id: string }>()
 	const location = useLocation()
 	const pokemon = location.state.pokemon as Pokemon
 

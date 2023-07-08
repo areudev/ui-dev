@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import type { Pokemon, Ability } from './pokemon-page'
+import { useNavigate } from 'react-router-dom'
+import type { Pokemon } from './pokemon-page'
 import { fetcher } from './pokemon-page'
 import useSWR from 'swr'
 import { Input } from '$components/input'

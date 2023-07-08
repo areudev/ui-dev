@@ -1,4 +1,4 @@
-import { fireEvent, getAllByText, render, screen } from 'test/utilities'
+import { fireEvent, render, screen } from 'test/utilities'
 import Galactic from '.'
 
 global.ResizeObserver = class ResizeObserver {
@@ -40,7 +40,7 @@ it('should find and control a checkbox input', async () => {
 it('should find and control a radio input', async () => {
 	const { user } = render(<Galactic />)
 
-	const group = screen.getByTestId('radio-group-beatles')
+	// const group = screen.getByTestId('radio-group-beatles')
 	const radio = screen.getByLabelText('Offset')
 	const radio2 = screen.getByLabelText('Quavo')
 	await user.click(radio)
@@ -49,16 +49,10 @@ it('should find and control a radio input', async () => {
 })
 
 it('should find and control a color input', async () => {
-	const { user } = render(<Galactic />)
+	render(<Galactic />)
 
 	const color = screen.getByLabelText('Favorite Color')
 	expect(color).toHaveValue('#38bdf8')
 	fireEvent.change(color, { target: { value: '#FF0000' } })
 	expect(color).toHaveValue('#ff0000')
 })
-
-it.todo('should find and control a date input', () => {})
-
-it.todo('should find and control a range input', () => {})
-
-it.todo('should find and control a file input', () => {})

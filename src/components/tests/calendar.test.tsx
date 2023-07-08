@@ -1,6 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
-import { DayPicker } from 'react-day-picker'
+import { render } from '@testing-library/react'
 import { Calendar } from '../calendar'
 import { vi } from 'vitest'
 

@@ -8,12 +8,7 @@ import PokemonSearch from './demos/pokemon'
 import PokemonDetail from './demos/pokemon/pokemon-page'
 
 import ThemeToggler from './lib/theming'
-import {
-	createBrowserRouter,
-	RouterProvider,
-	Link,
-	Outlet,
-} from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom'
 
 const router = createBrowserRouter([
 	{

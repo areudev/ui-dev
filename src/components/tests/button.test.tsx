@@ -5,7 +5,7 @@ import { vi } from 'vitest'
 
 describe('Button', () => {
 	it('renders button with default props', () => {
-		const { user } = renderComponent(<Button />)
+		renderComponent(<Button />)
 		const button = screen.getByRole('button')
 
 		expect(button).toBeInTheDocument()

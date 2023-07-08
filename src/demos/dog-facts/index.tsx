@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent } from 'react'
+import { useState, useEffect } from 'react'
 import dogFactsData from './dog-facts.json'
 import {
 	Select,
@@ -29,10 +29,6 @@ const DogFacts = () => {
 	useEffect(() => {
 		setFacts(getRandomDogFacts(numberOfFacts))
 	}, [numberOfFacts])
-
-	const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-		setNumberOfFacts(Number(e.target.value))
-	}
 
 	const handleClearFacts = () => {
 		setFacts([])
