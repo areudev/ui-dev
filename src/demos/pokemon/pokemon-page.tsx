@@ -32,7 +32,7 @@ const PokemonPage = () => {
 	return (
 		<div>
 			<h1>{pokemon.name}</h1>
-			<p>Height: {pokemon.height}</p>
+			{/* <p>Height: {pokemon.height}</p> */}
 			<p>Weight: {pokemon.weight}</p>
 			<p>Base Experience: {pokemon.base_experience}</p>
 			<h2>Abilities</h2>
